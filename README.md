@@ -50,9 +50,13 @@ python examples/generate_sample_data.py
 imu-labeler examples/sample_data/
 ```
 
-### 2. Use with your own data
+### 2. Use with your own research data
 
-Point the tool at a directory containing your sensor CSV:
+**Step 1:** Put your sensor CSV in a folder. Your CSV needs a timestamp column and sensor columns with `_x`, `_y`, `_z` suffixes (e.g., `accel_x`, `accel_y`, `accel_z`). See [CSV Format](#csv-format) below.
+
+**Step 2:** (Optional) If you have a synchronized video, place the `.mp4` file in the same folder.
+
+**Step 3:** Point the tool at your data folder:
 
 ```bash
 imu-labeler /path/to/your/data/
@@ -64,9 +68,11 @@ The tool auto-detects:
 - Any `.json` as video timing metadata
 - Sensor columns with `_x`, `_y`, `_z` suffixes
 
-### 3. Customize labels
+**Step 4:** Annotate! Press `A` to enter annotate mode, drag to select a time span, then press a label key. Your annotations are auto-saved to `annotations.csv` in the data folder.
 
-Create a `config.yaml` in your data directory:
+### 3. Customize labels for your project
+
+The default labels are `d` (Drinking), `e` (Eating), `v` (Vaping). To define your own, create a `config.yaml` in your data directory:
 
 ```yaml
 labels:
@@ -86,6 +92,20 @@ labels:
     name: Sitting
     color: "#6bcb77"
     key: t
+```
+
+You can define as many labels as you need — each gets a keyboard shortcut, a color, and a display name.
+
+### 4. Use annotations in your ML pipeline
+
+The output `annotations.csv` is a simple format you can load directly into your training pipeline:
+
+```python
+import pandas as pd
+
+annotations = pd.read_csv("annotations.csv")
+# columns: start, stop, label
+# Use start/stop timestamps to slice your sensor data into labeled segments
 ```
 
 ## Controls
@@ -150,7 +170,7 @@ start,stop,label
 
 ## Background
 
-This project grew out of a research annotation pipeline for labeling wearable IMU sensor data from finger-mounted sensors synchronized with video recordings. After building the internal tool for our research, I generalized it into this open-source tool so anyone working with IMU data can benefit from a fast, purpose-built labeling workflow.
+This project grew out of my current research work, where I needed a fast way to annotate wearable IMU sensor data synchronized with video. I generalized the internal tool into this open-source project so anyone working with IMU data can benefit from a purpose-built labeling workflow.
 
 ## License
 
