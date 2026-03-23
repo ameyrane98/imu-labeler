@@ -3,18 +3,22 @@
 
 # Define your activity labels (customize these for your project)
 labels:
-  d:
-    name: Drinking
-    color: "#ff6b6b"
-    key: d
-  e:
-    name: Eating
-    color: "#ffd93d"
-    key: e
-  v:
-    name: Vaping
-    color: "#6bcb77"
-    key: v
+  w:
+    name: Walking
+    color: "#4ecdc4"
+    key: w
+  r:
+    name: Running
+    color: "#e76f51"
+    key: r
+  s:
+    name: Sitting
+    color: "#a78bfa"
+    key: s
+  t:
+    name: Standing
+    color: "#f4a261"
+    key: t
 
 # Signal processing filter
 # Options: none, median, moving, gaussian

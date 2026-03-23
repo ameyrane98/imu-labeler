@@ -4,6 +4,8 @@
 
 Built for researchers and engineers who work with wearable sensors (accelerometers, gyroscopes, magnetometers) and need a fast, keyboard-driven way to annotate activities in their data.
 
+![IMU Labeler Demo](docs/screenshots/demo.gif)
+
 ## Features
 
 - **Interactive signal visualization** — plot accelerometer/gyroscope magnitude with zoom, pan, and real-time scrubbing
@@ -72,26 +74,22 @@ The tool auto-detects:
 
 ### 3. Customize labels for your project
 
-The default labels are `d` (Drinking), `e` (Eating), `v` (Vaping). To define your own, create a `config.yaml` in your data directory:
+The default labels are `w` (Walking), `r` (Running), `s` (Sitting), `t` (Standing). To define your own, create a `config.yaml` in your data directory:
 
 ```yaml
 labels:
-  w:
-    name: Walking
-    color: "#4ecdc4"
-    key: w
-  r:
-    name: Running
+  d:
+    name: Drinking
     color: "#ff6b6b"
-    key: r
-  s:
-    name: Standing
+    key: d
+  e:
+    name: Eating
     color: "#ffd93d"
-    key: s
-  sit:
-    name: Sitting
+    key: e
+  c:
+    name: Cooking
     color: "#6bcb77"
-    key: t
+    key: c
 ```
 
 You can define as many labels as you need — each gets a keyboard shortcut, a color, and a display name.
@@ -118,7 +116,7 @@ annotations = pd.read_csv("annotations.csv")
 | Toggle annotate mode | `A` |
 | Select span | `Drag` on plot |
 | Set start / stop | `[` then `]` |
-| Assign label | Press label key (e.g., `d`, `e`, `v`) |
+| Assign label | Press label key (e.g., `w`, `r`, `s`) |
 | Delete annotation | `Right-click` on colored span |
 | Edit label | `Double-click` on colored span |
 | Undo | `Ctrl+Z` |
