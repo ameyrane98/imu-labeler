@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+.env
+*.csv
+!examples/sample_data/*.csv
+*.mp4
+*.avi
+*.log
+.DS_Store

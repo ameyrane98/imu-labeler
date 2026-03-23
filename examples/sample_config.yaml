@@ -1,0 +1,49 @@
+# IMU Labeler — Example Configuration
+# Copy this to your data directory as config.yaml
+
+# Define your activity labels (customize these for your project)
+labels:
+  d:
+    name: Drinking
+    color: "#ff6b6b"
+    key: d
+  e:
+    name: Eating
+    color: "#ffd93d"
+    key: e
+  v:
+    name: Vaping
+    color: "#6bcb77"
+    key: v
+
+# Signal processing filter
+# Options: none, median, moving, gaussian
+filter_type: median
+filter_k: 3
+
+# Timestamp resampling (smooths jittery sensor timestamps)
+resample_timestamps: true
+resample_window: 100
+
+# Playback speed options
+speed_options: [0.5, 1.0, 2.0, 4.0]
+
+# Video settings (optional — auto-detected if not set)
+# video_file: path/to/video.mp4
+# video_json: path/to/metadata.json
+video_fps: 30
+video_crf: 18
+
+# Sensor columns (optional — auto-detected from CSV headers)
+# sensor_groups:
+#   left_hand_accel: [left_accel_x, left_accel_y, left_accel_z]
+#   right_hand_accel: [right_accel_x, right_accel_y, right_accel_z]
+
+# Timestamp column (optional — auto-detected)
+# timestamp_column: UTC_Timestamp
+
+# Reference labels for comparison (optional)
+# reference_labels_file: path/to/reference.csv
+
+# Output file (defaults to annotations.csv in data directory)
+# output_file: my_annotations.csv
